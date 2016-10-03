@@ -1,0 +1,104 @@
+$mbta_green:  #008150;
+$redsocks_red: #aa0000;
+$mbta_orange: #fd8a03;
+$disclaimer_darken: 15%;
+
+html {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100%;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+div.outer {
+  padding: 50px;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+img {
+  max-height: 50vmin;
+}
+
+h1 {
+  font-size: 10vmin;
+  margin-bottom: 1vmin;
+}
+
+@mixin sweet-ass-gradient($color) {
+  background-color: $color;
+  background: $color;
+
+  /* Old Browsers */
+  background: -moz-linear-gradient(top, $color 0%, $color 30%, darken($color, 10%) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, $color), color-stop(30%, $color), color-stop(100%, darken($color, 10%)));
+  /* Chrome, Safari4+ */
+  background: -webkit-linear-gradient(top, $color 0%, $color 30%, darken($color, 10%) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $color 0%, $color 30%, darken($color, 10%) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, $color 0%, $color 30%, darken($color, 10%) 100%);
+  /* IE 10+ */
+  background: linear-gradient(to bottom, $color 0%, $color 30%, darken($color, 10%) 100%);
+}
+
+body.okay {
+  @include sweet-ass-gradient($mbta_green)
+}
+
+body.trouble {
+  @include sweet-ass-gradient($redsocks_red)
+}
+
+body.warn {
+  @include sweet-ass-gradient($mbta_orange)
+}
+
+a.schedule {
+  color: white;
+  font-size: 14px;
+}
+
+a.schedule:hover {
+  color: darken(white, 5%);
+}
+
+a.a-sport-nearby {
+  border: none;
+}
+
+div.disclaimer-fixed {
+  position: absolute;
+  bottom: 0;
+}
+
+.disclaimer {
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+}
+
+.disclaimer.okay {
+  color: darken($mbta_green, $disclaimer_darken)
+}
+
+.disclaimer.warn {
+  color: darken($mbta_orange, $disclaimer_darken)
+}
+
+.disclaimer.trouble {
+  color: darken($redsocks_red, $disclaimer_darken)
+}
+
+table.schedule {
+  margin-top: 50px;
+  font-size: 18px
+}

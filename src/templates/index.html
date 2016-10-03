@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ site_name }}</title>
+    <link rel="stylesheet" href="/static/css/site.css"/>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '{{ analytics_id }}', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+<body class="{{ state }}">
+    <div class="outer">
+        <div class="{{ state }}">
+            {% if state != 'okay' %}<a href="http://invisiblebread.com/2016/09/i-can-feel-it/" title="There's a sport nearby... I can feel it -_-" class="a-sport-nearby">{% endif %}
+            <img src="/static/img/{{ image }}" alt="{{ message }}"/>
+            {% if state != 'okay' %}</a>{% endif %}
+            <h1>{{ message }}</h1>
+            {% if subtitle %}<h2>{{ subtitle }}</h2>{% endif %}
+        </div>
+        <div>
+            <a href="/schedule" class="schedule">SCHEDULE</a>
+        </div>
+    </div>
+    <div class="disclaimer disclaimer-fixed {{ state }}">
+        <p>This content is neither affiliated with nor endorsed by the MBTA or the Boston Red Sox.</p>
+    </div>
+</body>
+</html>
