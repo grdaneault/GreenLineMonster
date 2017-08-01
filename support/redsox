@@ -1,0 +1,30 @@
+server {
+        listen 80;
+        server_name areredsoxfansfuckingupthegreenline.com www.areredsoxfansfuckingupthegreenline.com greenlinemonster.review www.greenlinemonster.review greggernaut.com www.greggernaut.com;
+
+        location / {
+                include proxy_params;
+                proxy_pass http://unix:/home/gregmin/GreenLineMonster/src/redsox.sock;
+        }
+
+    listen 443 ssl; # managed by Certbot
+ssl_certificate /etc/letsencrypt/live/areredsoxfansfuckingupthegreenline.com/fullchain.pem; # managed by Certbot
+ssl_certificate_key /etc/letsencrypt/live/areredsoxfansfuckingupthegreenline.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+
+
+
+
+
+    if ($scheme != "https") {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    # Redirect non-https traffic to https
+    # if ($scheme != "https") {
+    #     return 301 https://$host$request_uri;
+    # } # managed by Certbot
+
+}
+

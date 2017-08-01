@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve GreenLineMonster
+After=network.target
+
+[Service]
+User=gregmin
+Group=www-data
+WorkingDirectory=/home/gregmin/GreenLineMonster/src
+Environment="PATH=/home/gregmin/venv/bin"
+ExecStart=/home/gregmin/venv/bin/gunicorn --workers 3 --bind unix:redsox.sock -m 007 wsgi:application
+
+[Install]
+WantedBy=multi-user.target
