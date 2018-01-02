@@ -1,6 +1,5 @@
 class SiteConfig(object):
-    SCHEDULE_URL = 'http://mlb.mlb.com/ticketing-client/csv/EventTicketPromotionPrice.tiksrv?team_id=111&home_team_id=111&display_in=singlegame&ticket_category=Tickets&site_section=Default&sub_category=Default&leave_empty_games=true&event_type=T&event_type=Y'
-
+    SCHEDULE_URL = 'http://www.ticketing-client.com/ticketing-client/csv/EventTicketPromotionPrice.tiksrv?team_id=111&home_team_id=111&display_in=singlegame&ticket_category=Tickets&site_section=Default&sub_category=Default&leave_empty_games=true&event_type=T'
     SITE_NAME = 'ARE RED SOX FANS FUCKING UP THE GREEN LINE?'
 
     STATE_OKAY = 'okay'
