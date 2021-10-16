@@ -26,12 +26,31 @@ class Game(object):
     __repr__ = __str__
 
 
+def should_add_event(start_date, start_time, end_date, end_time, description):
+    # Some times may be TBD.  If the event details aren't known we don't care about this event
+    if not start_date or not start_time or not end_date or not end_time:
+        return False
+
+    # Filter out noise like tours and graduations so the site doesn't just perpetually show it's gameday
+    for banned_keyword in Schedule.BANNED_EVENT_KEYWORDS:
+        if banned_keyword in description:
+            return False
+
+    return True
+
+
 class Schedule(object):
     CSV_START_DATE = 'START DATE'
     CSV_START_TIME = 'START TIME ET'
     CSV_END_DATE = 'END DATE'
     CSV_END_TIME = 'END TIME ET'
     CSV_SUBJECT = 'SUBJECT'
+    BANNED_EVENT_KEYWORDS = [
+        "Tour",
+        "NWE Test",
+        "Cocktail Party",
+        "Commencement "
+    ]
 
     def __init__(self, url):
         self.games = []
@@ -71,11 +90,11 @@ class Schedule(object):
                 start_time = row[indices[Schedule.CSV_START_TIME]]
                 end_date = row[indices[Schedule.CSV_END_DATE]]
                 end_time = row[indices[Schedule.CSV_END_TIME]]
-                description = row[indices[Schedule.CSV_SUBJECT]]
+                description = row[indices[Schedule.CSV_SUBJECT]].strip()
 
-                if start_date and start_time and end_date and end_time:
-                    # Some times may be TBD.  If the game details aren't known we don't care about this game
+                if should_add_event(start_date, start_time, end_date, end_time, description):
                     game = Game(start_date, start_time, end_date, end_time, description)
                     games.append(game)
+
         self.games = games
         self.last_updated = arrow.now('US/Eastern')

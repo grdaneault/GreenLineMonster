@@ -60,7 +60,7 @@ def create_app():
             return abort(400)
 
     @app.route('/schedule')
-    def schdule():
+    def get_schedule():
         return render_template(
             'schedule.html',
             site_name=app.config.get('SITE_NAME'),
