@@ -47,9 +47,12 @@ class Schedule(object):
     CSV_SUBJECT = 'SUBJECT'
     BANNED_EVENT_KEYWORDS = [
         "Tour",
+        "Parking",
         "NWE Test",
+        "Test Event",
         "Cocktail Party",
-        "Commencement "
+        "Commencement",
+        "NU "  # NU College of Professional Studies
     ]
 
     def __init__(self, url):
