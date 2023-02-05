@@ -9,9 +9,9 @@ class Game(object):
 
     def __init__(self, start_date, start_time, end_date, end_time, description):
         self.start = arrow.get('%s %s' % (start_date, start_time), Game.EXPECTED_DATE_FORMAT, tzinfo=tz.gettz('US/Eastern'))
-        self.start_extended = self.start.replace(hours=-4)
+        self.start_extended = self.start.shift(hours=-4)
         self.end = arrow.get('%s %s' % (end_date, end_time), Game.EXPECTED_DATE_FORMAT, tzinfo=tz.gettz('US/Eastern'))
-        self.end_extended = self.end.replace(hours=+4)
+        self.end_extended = self.end.shift(hours=+4)
         self.description = description
 
     def __str__(self):
