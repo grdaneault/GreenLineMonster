@@ -1,4 +1,4 @@
-$mbta_green:  #008150;
+$mbta_green: #008150;
 $redsocks_red: #aa0000;
 $mbta_orange: #fd8a03;
 $disclaimer_darken: 15%;
@@ -8,6 +8,7 @@ html {
   margin: 0;
   padding: 0;
 }
+
 body {
   min-height: 100%;
   color: white;
@@ -98,7 +99,38 @@ div.disclaimer-fixed {
   color: darken($redsocks_red, $disclaimer_darken)
 }
 
+.container {
+  margin: auto;
+}
+
+// Smallest comes first so that the larger sizes can take precedence
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
 table.schedule {
   margin-top: 50px;
-  font-size: 18px
+  font-size: 18px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.schedule td, th {
+  border-top: 1px solid rgb(221, 221, 221);
+  padding: .8em;
 }

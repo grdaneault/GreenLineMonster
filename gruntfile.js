@@ -3,7 +3,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         watch: {
-            files: ['src/**'],
+            files: ['src/styles/*.scss', 'src/svg/*.svg'],
             tasks: ['sass', 'copy']
         },
         sass: {

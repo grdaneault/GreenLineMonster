@@ -1,7 +1,8 @@
 html {
   min-height: 100%;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 body {
   min-height: 100%;
@@ -9,19 +10,23 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 div.outer {
   padding: 50px;
   padding-bottom: 0;
-  margin: 0; }
+  margin: 0;
+}
 
 img {
-  max-height: 50vmin; }
+  max-height: 50vmin;
+}
 
 h1 {
   font-size: 10vmin;
-  margin-bottom: 1vmin; }
+  margin-bottom: 1vmin;
+}
 
 body.okay {
   background-color: #008150;
@@ -37,7 +42,8 @@ body.okay {
   /* Opera 11.10+ */
   background: -ms-linear-gradient(top, #008150 0%, #008150 30%, #004e30 100%);
   /* IE 10+ */
-  background: linear-gradient(to bottom, #008150 0%, #008150 30%, #004e30 100%); }
+  background: linear-gradient(to bottom, #008150 0%, #008150 30%, #004e30 100%);
+}
 
 body.trouble {
   background-color: #aa0000;
@@ -53,7 +59,8 @@ body.trouble {
   /* Opera 11.10+ */
   background: -ms-linear-gradient(top, #aa0000 0%, #aa0000 30%, #770000 100%);
   /* IE 10+ */
-  background: linear-gradient(to bottom, #aa0000 0%, #aa0000 30%, #770000 100%); }
+  background: linear-gradient(to bottom, #aa0000 0%, #aa0000 30%, #770000 100%);
+}
 
 body.warn {
   background-color: #fd8a03;
@@ -69,38 +76,75 @@ body.warn {
   /* Opera 11.10+ */
   background: -ms-linear-gradient(top, #fd8a03 0%, #fd8a03 30%, #cb6f02 100%);
   /* IE 10+ */
-  background: linear-gradient(to bottom, #fd8a03 0%, #fd8a03 30%, #cb6f02 100%); }
+  background: linear-gradient(to bottom, #fd8a03 0%, #fd8a03 30%, #cb6f02 100%);
+}
 
 a.schedule {
   color: white;
-  font-size: 14px; }
+  font-size: 14px;
+}
 
 a.schedule:hover {
-  color: #f2f2f2; }
+  color: #f2f2f2;
+}
 
 a.a-sport-nearby {
-  border: none; }
+  border: none;
+}
 
 div.disclaimer-fixed {
   position: absolute;
-  bottom: 0; }
+  bottom: 0;
+}
 
 .disclaimer {
   font-size: 12px;
   text-align: center;
-  width: 100%; }
+  width: 100%;
+}
 
 .disclaimer.okay {
-  color: #003521; }
+  color: #003521;
+}
 
 .disclaimer.warn {
-  color: #b26101; }
+  color: #b26101;
+}
 
 .disclaimer.trouble {
-  color: #5e0000; }
+  color: #5e0000;
+}
 
+.container {
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
 table.schedule {
   margin-top: 50px;
-  font-size: 18px; }
+  font-size: 18px;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.schedule td, th {
+  border-top: 1px solid rgb(221, 221, 221);
+  padding: 0.8em;
+}
 
 /*# sourceMappingURL=site.css.map */

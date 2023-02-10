@@ -52,7 +52,10 @@ class Schedule(object):
         "Test Event",
         "Cocktail Party",
         "Commencement",
-        "NU "  # NU College of Professional Studies
+        "NU ",  # NU College of Professional Studies
+        "Autograph",
+        "Workout",
+
     ]
 
     def __init__(self, url):
