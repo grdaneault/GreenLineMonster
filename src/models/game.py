@@ -55,7 +55,8 @@ class Schedule(object):
         "NU ",  # NU College of Professional Studies
         "Autograph",
         "Workout",
-
+        "VIP Access",
+        "Q&A"
     ]
 
     def __init__(self, url):
