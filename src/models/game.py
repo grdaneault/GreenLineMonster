@@ -56,7 +56,8 @@ class Schedule(object):
         "Autograph",
         "Workout",
         "VIP Access",
-        "Q&A"
+        "Q&A",
+        "Voucher"
     ]
 
     def __init__(self, url):
