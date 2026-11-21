@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file', dest='file', default='-',
                     help='the location of the file to write after downloading the schedule')
 parser.add_argument('-u', '--url', dest='url',
-                    default='http://mlb.mlb.com/ticketing-client/csv/EventTicketPromotionPrice.tiksrv?team_id=111&home_team_id=111&display_in=singlegame&ticket_category=Tickets&site_section=Default&sub_category=Default&leave_empty_games=true&event_type=T&event_type=Y',
+                    default='https://mlb.mlb.com/ticketing-client/csv/EventTicketPromotionPrice.tiksrv?team_id=111&home_team_id=111&display_in=singlegame&ticket_category=Tickets&site_section=Default&sub_category=Default&leave_empty_games=true&event_type=T&event_type=Y',
                     help='The location containing the CSV for home games')
 
 CSV_START_DATE = 'START DATE ET'

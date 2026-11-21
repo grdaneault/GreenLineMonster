@@ -26,9 +26,13 @@ class Game(object):
     __repr__ = __str__
 
 
-def should_add_event(start_date, start_time, end_date, end_time, description):
+def should_add_event(start_date, start_time, end_date, end_time, location, description):
     # Some times may be TBD.  If the event details aren't known we don't care about this event
     if not start_date or not start_time or not end_date or not end_time:
+        return False
+
+    # Pre-season games show "JetBlue Park - Ft. Myers"
+    if location != "Fenway Park - Boston":
         return False
 
     # Filter out noise like tours and graduations so the site doesn't just perpetually show it's gameday
@@ -45,26 +49,36 @@ class Schedule(object):
     CSV_END_DATE = 'END DATE'
     CSV_END_TIME = 'END TIME ET'
     CSV_SUBJECT = 'SUBJECT'
+    CSV_LOCATION = 'LOCATION'
     BANNED_EVENT_KEYWORDS = [
-        "Tour",
-        "Parking",
-        "NWE Test",
-        "Test Event",
+        "Autograph",
+        "Club Pass" # Club Pass - Mumford & Sons
         "Cocktail Party",
         "Commencement",
+        "Fenway Fest", # Fenway Fest Practice/Autographs/STH Lounge
+        "Movie Night", # Movie Night at Fenway Park
         "NU ",  # NU College of Professional Studies
-        "Autograph",
-        "Workout",
-        "VIP Access",
+        "NWE Test",
+        "Parking",
         "Q&A",
-        "Voucher"
+        "STH", # "Season Ticket Holder" (I guess :shrug:)
+        "Social", # Season Ticket Holder Social
+        "Test Event",
+        "Tour",
+        "VIP Access",
+        "Voucher",
+        "Workout",
     ]
 
     def __init__(self, url):
         self.games = []
         self.url = url
         self.last_updated = None
-        self.reload()
+        try:
+            self.reload()
+        except:
+            self.last_updated = "no data"
+            print("Couldn't fetch games... schedule will be empty :(")
 
     def current_game(self):
         now = arrow.now('US/Eastern')
@@ -98,9 +112,10 @@ class Schedule(object):
                 start_time = row[indices[Schedule.CSV_START_TIME]]
                 end_date = row[indices[Schedule.CSV_END_DATE]]
                 end_time = row[indices[Schedule.CSV_END_TIME]]
+                location = row[indices[Schedule.CSV_LOCATION]]
                 description = row[indices[Schedule.CSV_SUBJECT]].strip()
 
-                if should_add_event(start_date, start_time, end_date, end_time, description):
+                if should_add_event(start_date, start_time, end_date, end_time, location, description):
                     game = Game(start_date, start_time, end_date, end_time, description)
                     games.append(game)
 
