@@ -1,5 +1,8 @@
+from typing import Iterable
+
 import arrow
 import csv
+import os
 
 import requests
 from dateutil import tz
@@ -52,7 +55,8 @@ class Schedule(object):
     CSV_LOCATION = 'LOCATION'
     BANNED_EVENT_KEYWORDS = [
         "Autograph",
-        "Club Pass" # Club Pass - Mumford & Sons
+        "Block Party", # Berklee Block Party
+        "Club Pass", # Club Pass - Mumford & Sons
         "Cocktail Party",
         "Commencement",
         "Fenway Fest", # Fenway Fest Practice/Autographs/STH Lounge
@@ -66,19 +70,20 @@ class Schedule(object):
         "Test Event",
         "Tour",
         "VIP Access",
+        "Voucer", # oops: "Japanese Celebration Jersey Voucer"
         "Voucher",
         "Workout",
     ]
 
-    def __init__(self, url):
+    def __init__(self, url: str, fallback: str):
         self.games = []
         self.url = url
+        self.fallback = fallback
         self.last_updated = None
         try:
             self.reload()
         except:
-            self.last_updated = "no data"
-            print("Couldn't fetch games... schedule will be empty :(")
+            self.load_from_file()
 
     def current_game(self):
         now = arrow.now('US/Eastern')
@@ -94,10 +99,20 @@ class Schedule(object):
             return today[0]
         return None
 
+    def load_from_file(self):
+        with open(self.fallback, mode="r", encoding="utf-8") as schedule:
+            reader = csv.reader(schedule)
+            self._process_schedule(reader)
+            self.last_updated = arrow.get(os.path.getmtime(self.fallback))
+
     def reload(self):
         schedule = requests.get(self.url)
         rows = schedule.text.strip().split('\n')
         reader = csv.reader(rows)
+        self._process_schedule(reader)
+
+    def _process_schedule(self, reader: Iterable[list[str]]):
+
 
         games = []
         indices = {}

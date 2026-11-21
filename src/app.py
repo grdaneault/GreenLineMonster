@@ -7,7 +7,7 @@ from models import Schedule
 def create_app():
     app = Flask(__name__)
     app.config.from_object('config.SiteConfig')
-    schedule = Schedule(app.config.get('SCHEDULE_URL'))
+    schedule = Schedule(app.config.get('SCHEDULE_URL'), app.config.get('SCHEDULE_FALLBACK'))
 
     def message_for_state(state):
         return random.choice(app.config.get('MESSAGES')[state])
